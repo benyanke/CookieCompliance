@@ -12,9 +12,9 @@
         "hellobrave/core": "*"
     },
     "authors": [{
-        "name": "HelloBrave",
-        "email": "dev@hellobrave.com",
-        "homepage": "http://www.hellobrave.com/",
+        "name": "Ben Yanke",
+        "email": "ben@benyanke.com",
+        "homepage": "https://github.com/benyanke/CookieCompliance",
         "role": "Developer"
     }],
     "autoload": {
