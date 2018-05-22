@@ -34,6 +34,33 @@
                     <comment>Add CSS to change the style of the notification bar.</comment>
                 </field>
             </group>
+
+            <group id="advanced" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Advanced</label>
+                <comment>These settings allow easier integration across multiple sites which may want to share the same banner cookie</comment>
+
+                <field id="cookie_name" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cookie Name</label>
+                </field>
+
+                <field id="cookie_expire_days" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cookie Expiration Days</label>
+                </field>
+
+                <field id="cookie_domain" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <comment>Leave blank to not specify the domain - which is the expected behavior in most cases</comment>
+                    <label>Cookie Domain</label>
+                </field>
+
+                <field id="cookie_path" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cookie Path</label>
+                </field>
+
+                <field id="cookie_set_value" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cookie Set Value</label>
+                    <comment>The value of the cookie when the banner has been closed by the user</comment>
+                </field>
+            </group>
         </section>
     </system>
 </config>

@@ -7,7 +7,26 @@ if ($helper->getConfig('hellobrave_cookiecompliance/general/enabled')) {
     $learn_link = $helper->getConfig('hellobrave_cookiecompliance/general/learn_link');
     $learn_message = $helper->getConfig('hellobrave_cookiecompliance/general/learn_message');
     $hide_message = $helper->getConfig('hellobrave_cookiecompliance/general/hide_message');
-    $custom_css = $helper->getConfig('hellobrave_cookiecompliance/general/custom_css'); ?>
+    $custom_css = $helper->getConfig('hellobrave_cookiecompliance/general/custom_css');
+
+    $cookie_name = $helper->getConfig('hellobrave_cookiecompliance/advanced/cookie_name');
+    $cookie_expire_days = $helper->getConfig('hellobrave_cookiecompliance/advanced/cookie_expire_days');
+    $cookie_domain = $helper->getConfig('hellobrave_cookiecompliance/advanced/cookie_domain');
+    $cookie_path = $helper->getConfig('hellobrave_cookiecompliance/advanced/cookie_path');
+    $cookie_set_value = $helper->getConfig('hellobrave_cookiecompliance/advanced/cookie_set_value');
+
+    $settings_raw = new stdClass();
+    $settings_raw->expires = (int) $cookie_expire_days;
+    $settings_raw->path = $cookie_path;
+
+    if(strlen($cookie_domain) > 0) {
+        $settings_raw->domain = $cookie_domain;
+    }
+
+    $json_settings = json_encode($settings_raw);
+
+    ?>
+
     <div id="hb-cc-wrap">
         <span><?php echo $message; ?><?php echo $link_separator; ?><a href="<?php echo $learn_link; ?>" id="hb-cc-ll"><?php echo $learn_message; ?></a><?php echo $link_separator; ?><a href="#" id="hb-cc-hide"><?php echo $hide_message; ?></a></span>
     </div>
@@ -15,7 +34,7 @@ if ($helper->getConfig('hellobrave_cookiecompliance/general/enabled')) {
         requirejs(['jquery','jquery.cookie'],function(jQuery){
             (function($) {
                 // Show cookie bar
-                if ($.cookie('hellobrave_cookiecompliance') != "true") {
+                if ($.cookie('<?php echo $cookie_name; ?>') != "<?php echo $cookie_set_value; ?>") {
                     $('#hb-cc-wrap').show();
                 }
                 // Handle hide button
@@ -23,7 +42,7 @@ if ($helper->getConfig('hellobrave_cookiecompliance/general/enabled')) {
                     event.preventDefault();
                     $('#hb-cc-wrap').hide();
                     // SET COOKIE
-                    $.cookie('hellobrave_cookiecompliance', "true", { expires: 28, path: '/' });
+                    $.cookie('<?php echo $cookie_name; ?>', "<?php echo $cookie_set_value; ?>", <?php echo $json_settings; ?>);
                 })
             })(jQuery);
         });

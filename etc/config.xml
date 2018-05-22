@@ -10,6 +10,13 @@
                 <link_separator> - </link_separator>
                 <custom_css></custom_css>
             </general>
+            <advanced>
+                <cookie_name>hellobrave_cookiecompliance</cookie_name>
+                <cookie_expire_days>20</cookie_expire_days>
+                <cookie_domain></cookie_domain>
+                <cookie_path>/</cookie_path>
+                <cookie_set_value>true</cookie_set_value>
+            </advanced>
         </hellobrave_cookiecompliance>
     </default>
 </config>
